@@ -1,0 +1,6 @@
+djangorestframework
+drf-spectacular
+requests
+python-dotenv
+django_filter
+pillow
