@@ -13,7 +13,6 @@ admin.site.register(models.Region)
 admin.site.register(models.VehicleType)
 
 
-
 class CarImageInline(admin.StackedInline):
     model = models.CarImage
     extra = 1
