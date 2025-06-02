@@ -13,7 +13,8 @@ def save_image(url, name):
              file.write(response.content)
         return f'media/car/mark/mark_{name}.png'
     else:
-        raise Exception(f"Ошибка при скачивание изображение марки {url}")
+        return None
+        # raise Exception(f"Ошибка при скачивание изображение марки {url}")
 
 def upload_marks():
     URL = 'https://doubledragon.mashina.kg:443/v1/public/data/'
@@ -71,7 +72,7 @@ def upload_data():
         for colors in data_list:
             instance_name = colors.get('name', None)
             instance_color = colors.get('color', 'Черный')
-            created = models.CarColors.objects.update_or_create(
+            created = models.CarColor.objects.update_or_create(
                 id=colors.get('id'),
                 defaults={
                     "name": instance_name,

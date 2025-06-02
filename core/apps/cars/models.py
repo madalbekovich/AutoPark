@@ -124,7 +124,7 @@ class CarPost(models.Model):
     count_owner = models.ForeignKey('CarOwner', on_delete=models.CASCADE, verbose_name='К-лво Владелец')
     steering_wheel = models.ForeignKey('SteeringWheel', on_delete=models.CASCADE, verbose_name='Руль')
     condition = models.ForeignKey('Condition', on_delete=models.CASCADE, verbose_name='Техническое состояние')
-    custom = models.ForeignKey('Custom', on_delete=models.CASCADE, verbose_name='Техническое состояние')
+    custom = models.ForeignKey('Custom', on_delete=models.CASCADE, verbose_name='Расстоможен')
     availability = models.ForeignKey('Availability', on_delete=models.CASCADE, verbose_name='Наличии')
     region = models.ForeignKey('Region', on_delete=models.CASCADE, verbose_name='Регион продажи')
 
@@ -132,11 +132,11 @@ class CarPost(models.Model):
     engine_volume = models.DecimalField(max_digits=2, decimal_places=1, verbose_name='Объем двигателя (л)')
 
     mileage = models.IntegerField(default=000000, verbose_name='Пробег')
-    distance_unit = models.CharField(choices=choices.DISTANCE_UNIT_CHOICES, default='KM', verbose_name='Измерения расстояния')
+    distance_unit = models.CharField(choices=choices.DISTANCE_UNIT_CHOICES, default='KM', verbose_name='Измерения расстояния', max_length=10)
     price = models.DecimalField(max_digits=12, decimal_places=1, default=0.0, verbose_name='Цена')
-    currency = models.CharField(default='Сом', choices=choices.CURRENCY, verbose_name='Валюта цены')
+    currency = models.CharField(default='Сом', choices=choices.CURRENCY, verbose_name='Валюта цены', max_length=10)
 
-    vin_code = models.CharField(default='01KG000ABC', verbose_name='VIN код')
+    vin_code = models.CharField(default='01KG000ABC', verbose_name='VIN код', max_length=10)
     description = models.TextField(null=True, blank=True, verbose_name='Дополнительная информация')
     ctc_phone_1 = models.CharField(default='+996', max_length=50, verbose_name='Телефонный номер для контакта1')
     ctc_phone_2 = models.CharField(default='+996', max_length=50, verbose_name='Телефонный номер для контакта2')

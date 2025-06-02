@@ -47,3 +47,8 @@ class CombinedCarSerializer(serializers.Serializer):
     transmission = TransmissionSerializer(many=True)
     gearbox_box = GearBoxSerializer(many=True)
     color = CarColorSerializer(many=True)
+
+class CarPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.CarPost
+        fields = '__all__'

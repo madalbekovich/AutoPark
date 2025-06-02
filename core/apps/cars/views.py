@@ -59,3 +59,8 @@ class PublicDataView(generics.GenericAPIView):
             "color": models.CarColor.objects.only('id', 'name'),
         }).data
         return Response(data, status=status.HTTP_200_OK)
+
+class CarPostList(generics.ListAPIView):
+    """Возврощает список автомобилей"""
+    queryset = models.CarPost.objects.all()
+    serializer_class = serializers.CarPostSerializer
